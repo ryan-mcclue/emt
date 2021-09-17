@@ -1,0 +1,5 @@
+#!/bin/sh
+# SPDX-License-Identifier: zlib-acknowledgement 
+
+# NOTE(Ryan): Assuming prior invocation: cmake -Bbuild
+cmake --build build/
