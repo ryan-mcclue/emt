@@ -8,6 +8,7 @@
 !LICENSE
 
 !CMakeLists.txt
+!src/CMakeLists.txt
 !src/**/*.c
 !include/**/*.h
 !tests/**/*.[ch]
