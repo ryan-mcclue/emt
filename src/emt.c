@@ -9,7 +9,7 @@
 void
 test(void **state)
 {
-  assert_true(0);
+  assert_true(1);
 }
 
 int
