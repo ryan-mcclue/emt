@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if test "${1}" = "one"; then
+  # NOTE(Ryan): After $(docker run -it throwtheswitch/drsurly-course1)
+  # Identified $(docker ps -a)
+  docker start -i heuristic_mccarthy
+elif test "${1}" = "two"; then
+  # NOTE(Ryan): After $(docker run -it throwtheswitch/drsurly-course2)
+  docker start -i hardcore_gagarin
+else
+  printf "usage: ./enter [one|two]\n"
+  exit 1
+fi
