@@ -1,4 +1,7 @@
 #!/bin/sh
 # SPDX-License-Identifier: zlib-acknowledgement 
 
+# listing: $(qemu-system-arm -machine help)
+# qemu-system-arm -M sdsad -nographic -kernel ./build/src/emt
+
 ./build/src/emt

@@ -5,8 +5,7 @@ if test "${1}" = "one"; then
   # Identified $(docker ps -a)
   docker start -i heuristic_mccarthy
 elif test "${1}" = "two"; then
-  # NOTE(Ryan): After $(docker run -it throwtheswitch/drsurly-course2)
-  docker start -i hardcore_gagarin
+  docker run -it --rm -v "$PWD"/files:/lab throwtheswitch/drsurly-course2
 else
   printf "usage: ./enter [one|two]\n"
   exit 1

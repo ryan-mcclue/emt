@@ -6,4 +6,28 @@ project(EMT
         LANGUAGES C)
 set_property(GLOBAL PROPERTY C_STANDARD 11)
 
+include(cmake/CPM.cmake)
+
+################
+# DEPENDENCIES #
+################
+
+CPMAddPackage(
+  NAME printf
+  GITHUB_REPOSITORY mpaland/printf
+  VERSION 4.0.0
+  DOWNLOAD_ONLY
+)
+
+add_library(printf INTERFACE)
+target_sources(printf INTERFACE
+  ${printf_SOURCE_DIR}/printf.c
+)
+target_include_directories(printf SYSTEM INTERFACE 
+  ${printf_SOURCE_DIR}
+)
+
+###############
+# SOURCE TREE #
+###############
 add_subdirectory(src)
