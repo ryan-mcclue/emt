@@ -12,6 +12,19 @@ include(cmake/CPM.cmake)
 # DEPENDENCIES #
 ################
 
+find_package(cmocka QUIET)
+if(NOT cmocka_FOUND)
+  CPMAddPackage(
+    NAME cmocka
+    GITHUB_REPOSITORY https://git.cryptomilk.org/projects/cmocka.git/
+    VERSION 1.1.5
+    GIT_TAG cmocka-1.1.5
+    OPTIONS
+      "WITH_EXAMPLES OFF"
+      "CMAKE_BUILD_TYPE DEBUG"
+  )
+endif()
+
 CPMAddPackage(
   NAME printf
   GITHUB_REPOSITORY mpaland/printf

@@ -15,6 +15,10 @@ target_link_libraries(adder PRIVATE
   printf
 )
 
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+  # we aren't being used as a dependency
+endif()
+
 # CMAKE_MODULE_PATH
 # opt to use CPM as scattered, e.g. just download, package, pkg-config etc.  
 
