@@ -6,17 +6,8 @@
 !README.md
 !LICENSE
 
-!CMakeLists.txt
-
-!cmake/
-!cmake/**/*.cmake
-
-!src/
-!src/CMakeLists.txt
-!src/**/*.c
-
-!include/
-!include/**/*.h
+!code/
+!code/**/*.[ch]
 
 !tests/
 !tests/**/*.[ch]

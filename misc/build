@@ -1,5 +1,17 @@
 #!/bin/sh
 # SPDX-License-Identifier: zlib-acknowledgement 
 
-# NOTE(Ryan): Assuming prior invocation: cmake -Bbuild
-cmake --build build/
+test ! -d build && mkdir build
+
+# TODO(Ryan): How does --specs remove warning and not -nostdlib?
+# What are the --specs arguments for?
+#arm-none-eabi-gcc --specs=nosys.specs -mcpu=cortex-m4 -g code/emt.c -o build/emt.elf
+
+
+# TODO(Ryan): How to identify what file?
+${ASF_PATH}/sam0/utils/cmsis/samd21/source/gcc/startup_samd21.c 
+emt.c
+
+arm-none-eabi-gcc --specs=nosys.specs -mcpu=cortex-m4 -g code/emt.c -o build/emt.elf
+
+arm-none-eabi-objcopy -O binary build/emt.elf build/emt.bin
