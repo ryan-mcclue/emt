@@ -4,4 +4,5 @@
 # listing: $(qemu-system-arm -machine help)
 # qemu-system-arm -M sdsad -nographic -kernel ./build/src/emt
 
-./build/src/emt
+# IMPORTANT(Ryan): For threading, CMOCKA_TEST_ABORT='1' ./build/emt
+./build/emt

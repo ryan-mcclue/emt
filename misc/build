@@ -7,11 +7,15 @@ test ! -d build && mkdir build
 # What are the --specs arguments for?
 #arm-none-eabi-gcc --specs=nosys.specs -mcpu=cortex-m4 -g code/emt.c -o build/emt.elf
 
-
 # TODO(Ryan): How to identify what file?
-${ASF_PATH}/sam0/utils/cmsis/samd21/source/gcc/startup_samd21.c 
-emt.c
+#${ASF_PATH}/sam0/utils/cmsis/samd21/source/gcc/startup_samd21.c 
+#emt.c
+#
+#arm-none-eabi-gcc --specs=nosys.specs -mcpu=cortex-m4 -g code/emt.c -o build/emt.elf
+#
+#arm-none-eabi-objcopy -O binary build/emt.elf build/emt.bin
 
-arm-none-eabi-gcc --specs=nosys.specs -mcpu=cortex-m4 -g code/emt.c -o build/emt.elf
+# IMPORTANT(Ryan): For specifying library locations: -Lfolder -Wl,-rpath=folder
+# https://github.com/samvrlewis/cmocka-embedded-example
 
-arm-none-eabi-objcopy -O binary build/emt.elf build/emt.bin
+gcc -g code/emt.c -o build/emt -lcmocka

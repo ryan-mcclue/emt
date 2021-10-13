@@ -3,9 +3,10 @@
 if test "${1}" = "one"; then
   # NOTE(Ryan): After $(docker run -it throwtheswitch/drsurly-course1)
   # Identified $(docker ps -a)
-  docker start -i heuristic_mccarthy
+  # docker start -i heuristic_mccarthy
+  docker run -it --rm -v "$PWD"/course1:/lab throwtheswitch/drsurly-course1
 elif test "${1}" = "two"; then
-  docker run -it --rm -v "$PWD"/files:/lab throwtheswitch/drsurly-course2
+  docker run -it --rm -v "$PWD"/course2:/lab throwtheswitch/drsurly-course2
 else
   printf "usage: ./enter [one|two]\n"
   exit 1

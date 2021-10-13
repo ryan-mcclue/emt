@@ -1,10 +1,23 @@
 // SPDX-License-Identifier: zlib-acknowledgement
 
-// NOTE(Ryan): Obtained from armv7-M manual (Reset behaviour)
-// SP = 0x0
-// PC = 0x4
-int
-main(int argc, char *argv[])
+#include <stdarg.h>
+#include <stdint.h>
+#include <stddef.h>
+#include <setjmp.h>
+#include <cmocka.h>
+
+static void
+test_TheFirst(void **cmocka_state)
 {
-  return 0;
+  assert_true(1 == 1);
+}
+
+int 
+main(void)
+{
+	const struct CMUnitTest tests[] = {
+    cmocka_unit_test(test_TheFirst),
+  };
+
+  return cmocka_run_group_tests(tests, NULL, NULL);
 }
