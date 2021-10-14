@@ -18,4 +18,4 @@ test ! -d build && mkdir build
 # IMPORTANT(Ryan): For specifying library locations: -Lfolder -Wl,-rpath=folder
 # https://github.com/samvrlewis/cmocka-embedded-example
 
-gcc -g code/emt.c -o build/emt -lcmocka
+gcc -g -Icode code/emt.c tests/test_emt.c -o build/emt -lcmocka

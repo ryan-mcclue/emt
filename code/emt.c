@@ -1,23 +1,22 @@
 // SPDX-License-Identifier: zlib-acknowledgement
 
-#include <stdarg.h>
-#include <stdint.h>
-#include <stddef.h>
-#include <setjmp.h>
-#include <cmocka.h>
+#include "emt.h"
 
-static void
-test_TheFirst(void **cmocka_state)
+int
+get_fib(int num)
 {
-  assert_true(1 == 1);
-}
+  int cur = 1, next = 1, temp = 0;
 
-int 
-main(void)
-{
-	const struct CMUnitTest tests[] = {
-    cmocka_unit_test(test_TheFirst),
-  };
+  if (num < 0 || num >= FIB_OVERFLOW_NUM) return 0;
 
-  return cmocka_run_group_tests(tests, NULL, NULL);
+  if (num == 0 || num == 1) return 1;
+
+  for (int cursor = 2; cursor <= num; ++cursor)
+  {
+    temp = cur;
+    cur = next;
+    next += temp;
+  }
+
+  return next;
 }
