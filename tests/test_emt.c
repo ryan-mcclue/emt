@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: zlib-acknowledgement
 
+// IMPORTANT(Ryan): Instead of providing a header, could just extern functions
 #include "emt.h"
 
 #define ARRAY_LEN(arr) \
@@ -53,6 +54,9 @@ test_NegativeElementsShouldReturn0(void **cmocka_state)
 static void
 test_ElementThatOverflowsShouldReturn0(void **cmocka_state)
 {
+  assert_int_equal(sizeof(int), 4);
+
+  assert_true(get_fib(FIB_OVERFLOW_NUM - 1) != 0);
   assert_int_equal(get_fib(FIB_OVERFLOW_NUM), 0);
   assert_int_equal(get_fib(FIB_OVERFLOW_NUM + 5), 0);
   assert_int_equal(get_fib(INT_MAX), 0);
