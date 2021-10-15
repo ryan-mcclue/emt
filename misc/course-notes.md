@@ -1,4 +1,6 @@
 <!-- SPDX-License-Identifier: zlib-acknowledgement -->
+THE HARDEST THING IN SOFTWARE IS NOT TO OVERCOMPLICATE
+
 Unit and integration tests are to be done in software (as we have more control, e.g. in hardware we can't simulate malformed pin states, resets, etc.)
 There is little point in writing tests for bare metal in renode, as you require the hardware to write a driver and once it works, it works.
 System/acceptence tests are for hardware (or could be done with Renode).

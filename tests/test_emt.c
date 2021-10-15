@@ -62,10 +62,28 @@ test_ElementThatOverflowsShouldReturn0(void **cmocka_state)
   assert_int_equal(get_fib(INT_MAX), 0);
 }
 
+int
+cmocka_group_setup(void **state)
+{
+  TestState *test_state = calloc(1, sizeof(TestState));
+  *state = test_state;
+  return 0;
+}
+
+int
+cmocka_test_setup(void **state)
+{
+  TestState *test_state = *state;
+  test_state->val = 0;
+  return 0;
+}
+
+
 int 
 main(void)
 {
 	const struct CMUnitTest tests[] = {
+    // cmocka_unit_test_setup_teardown(test, setup, teardown),
     cmocka_unit_test(test_Element0ShouldReturn1),
     cmocka_unit_test(test_Element2ShouldReturn2),
     cmocka_unit_test(test_ElementNShouldReturnPartOfSequence),
@@ -73,5 +91,5 @@ main(void)
     cmocka_unit_test(test_ElementThatOverflowsShouldReturn0),
   };
 
-  return cmocka_run_group_tests(tests, NULL, NULL);
+  return cmocka_run_group_tests(tests, group_setup, group_teardown);
 }

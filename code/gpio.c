@@ -21,6 +21,25 @@ typedef volatile struct
 #define GPIO_OK 0
 
 int
+gpio_init(void)
+{
+  // just set default values for registers
+}
+
+int
+gpio_set_pin(u8 pin)
+{
+  // set output to high
+  // this needs to handle reversed polarity pins
+}
+
+int
+gpio_read_pin(u8 pin)
+{
+  return PORTA->pdir ^ reversed_polarities_mask;
+}
+
+int
 gpio_set_pin_as_output(u8 pin)
 {
   // pdor |= BIT_TO_MASK(1);
@@ -31,6 +50,7 @@ gpio_set_pin_as_output(u8 pin)
 void
 test_SetGPIOPinAsOutput_SHOULD_ConfigurePinDirection(void)
 {
+  // NOTE(Ryan): Tests begin by establishing register/peripheral state
   PORTA->pdor = 0;
 
   gpio_set_pin_as_output(0);
