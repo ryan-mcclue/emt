@@ -7,15 +7,16 @@ System/acceptence tests are for hardware (or could be done with Renode).
 
 UNIT TEST TYPES:
 state based testing good for independent modules i.e. operate on the edge of the system, 
-e.g. math functions, drivers (gpio), storage modules
+e.g. math functions, drivers (gpio; they typically just affect state of registers; this is where setup and teardown functions useful),
+storage modules, or literal state machines
 
 interaction based testing good for modules that glue things together
-
 
 1. Perform green-field testing (most likely only white box tests)
 Naming based on behaviour, e.g. test_Input0ShouldReturn10, etc. 
 (or test_Input0_should_Return10, test_SetPinAsOutput_SHOULD_NotUpdateDirection_WHEN_PinIsNotValid)
 Once specifics are done do general, e.g. test_InputNShouldReturnValidResponse
+TODO(Ryan): .vimrc Auto-add test verbs as comments in test files
 
 2. Perform error conditions. How these errors are handled is determined by product requirements,
 company policy (all errors are logged to a file) and finally falling back on your own judgement
